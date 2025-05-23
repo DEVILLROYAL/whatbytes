@@ -1,3 +1,5 @@
+import { Star } from "lucide-react";
+
 export default async function ProductList() {
 
     const ul = "https://fakestoreapi.com/products";
@@ -8,32 +10,39 @@ export default async function ProductList() {
     
   return (
     <>
-        <div className="product border border-black w-full rounded-xl h-auto p-5">
-            <div className="grid grid-cols-3 border gap-5 border-black">
+        <div className="product w-full rounded-xl h-auto">
+            <div className="grid grid-cols-3 gap-5 ">
                 {res.map((item, index)=>{return(
-                    <div key={item.id} className="row border border-black p-5 flex flex-col justify-between gap-5">
+                    <div key={item.id} className="row border border-black p-5 flex flex-col gap-5">
                         <div className="">
                             <img src={item.image} alt={item.title} width='100%' />
                         </div>
-                        <div className="border border-black">
-                            <p>
-                                ₹ {(item.price * rate).toFixed(2)}
-                            </p>
-                        </div>
-                        <div>
-                            <p className="border border-black font-serif" >
-                                {item.title}
-                            </p>
-                        </div>
-                        <div className="border border-black">
-                            <button type="button" className="btn" value={item.category}>
-                                Add to Cart
-                            </button>
-                        </div>
-                        <div>
-                            <p>
-                                Rating: {item.rating.rate}
-                            </p>
+                        <div className='flex flex-col gap-5 relative'>
+                            <div className="text-xl w-max">
+                                <p>
+                                    ₹ {(item.price * rate).toFixed()}
+                                </p>
+                            </div>
+                            <div className="text-xl font-sans">
+                                <p>
+                                    {item.title}
+                                </p>
+                            </div>
+                            <div className="border border-black w-max p-2 rounded bg-black text-white">
+                                <button type="button" value={item.category}>
+                                    Add to Cart
+                                </button>
+                            </div>
+                            <div className="text-sm font-sans">
+                                <p>
+                                    {item.description}
+                                </p>
+                            </div>
+                            <div className='w-max p-2 rounded'>
+                                <p className="flex gap-2">
+                                    <Star style={{color:item.rating.rate < 3 ? 'orange' : 'green',fill:item.rating.rate < 3 ? 'yellow' : 'green'}}/> <span>{item.rating.rate}</span> ({item.rating.count})
+                                </p>
+                            </div>
                         </div>
                     </div>
                 )})}
