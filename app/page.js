@@ -1,10 +1,8 @@
-import Main from "./layouts/components/Main";
-import Navbar from "./layouts/Header";
+import Main from "./layouts/Main";
 
 export default function Home() {
   return (
     <>
-        <Navbar/>
         <Main/>
     </>
   );

@@ -1,5 +1,5 @@
-import ProductFilter from "./ProductFilter";
-import ProductList from "./ProductList";
+import ProductFilter from "./components/ProductFilter";
+import ProductList from "./components/ProductList";
 
 export default function Main() {
   return (
