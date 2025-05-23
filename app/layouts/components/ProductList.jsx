@@ -6,14 +6,13 @@ export default async function ProductList() {
     const data = await fetch(ul);
     const res = await data.json();
     const rate = 83.5;
-    console.log(res);
     
   return (
     <>
         <div className="product w-full rounded-xl h-auto">
             <div className="grid grid-cols-3 gap-5 ">
                 {res.map((item, index)=>{return(
-                    <div key={item.id} className="row border border-black p-5 flex flex-col gap-5">
+                    <div key={item.id} className="row border border-black p-5 h-max flex flex-col gap-5">
                         <div className="">
                             <img src={item.image} alt={item.title} width='100%' />
                         </div>
@@ -28,7 +27,7 @@ export default async function ProductList() {
                                     {item.title}
                                 </p>
                             </div>
-                            <div className="border border-black w-max p-2 rounded bg-black text-white">
+                            <div className="border border-black text-sm w-max p-2 rounded bg-black text-white">
                                 <button type="button" value={item.category}>
                                     Add to Cart
                                 </button>
