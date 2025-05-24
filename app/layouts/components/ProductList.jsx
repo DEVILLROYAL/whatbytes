@@ -1,17 +1,20 @@
+'use client'
+
 import { Star } from "lucide-react";
+import { useRouter } from "next/navigation";
 
-export default async function ProductList() {
-
-    const ul = "https://fakestoreapi.com/products";
-    const data = await fetch(ul);
-    const res = await data.json();
+export default function ProductList(props) {
+    const router = useRouter();
     const rate = 83.5;
+    const handleProductClick = (slug) => {
+        router.push(`/product/${slug}`);
+    }
     
   return (
     <>
         <div className="product w-full rounded-xl h-auto">
             <div className="grid grid-cols-3 gap-5 ">
-                {res.map((item, index)=>{return(
+                {props.data?.map((item, index)=>{return(
                     <div key={item.id} className="row border border-black p-5 h-max flex flex-col gap-5">
                         <div className="">
                             <img src={item.image} alt={item.title} width='100%' />
@@ -23,9 +26,9 @@ export default async function ProductList() {
                                 </p>
                             </div>
                             <div className="text-xl font-sans">
-                                <p>
-                                    {item.title}
-                                </p>
+                                <button className="text-left" onClick={()=>handleProductClick(item.id)} >
+                                    <p>{item.title}</p>
+                                </button>
                             </div>
                             <div className="border border-black text-sm w-max p-2 rounded bg-black text-white">
                                 <button type="button" value={item.category}>
