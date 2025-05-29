@@ -1,4 +1,5 @@
-import { Star } from "lucide-react";
+import { Star, ShoppingCart } from "lucide-react";
+
 export default async function productPage({ params }) {
     const {slug} = await params;
     const ul = `https://fakestoreapi.com/products/${slug}`;
@@ -9,8 +10,8 @@ export default async function productPage({ params }) {
 
   return (
     <>
-         <div className='border border-black w-full p-5 flex gap-5'>
-            <div className='w-1/3'>
+         <div className='w-full xl:flex p-5 gap-5'>
+            <div className='w-1/11 p-5 xl:p-16'>
                 <img src={res.image} alt={res.title} />
             </div>
             <div className='w-full p-5 flex flex-col gap-5 text-xl overflow-auto'>
@@ -21,7 +22,7 @@ export default async function productPage({ params }) {
                         </p>
                     </div>
                     <div className="h-full flex flex-col justify-center">
-                        <p className='text-sm w-max h-11 p-2 bg-gray-600 text-white'>
+                        <p className='text-sm w-max flex flex-col justify-center h-11 p-2 bg-gray-600 text-white'>
                             {res.category}
                         </p>
                     </div>
@@ -38,11 +39,11 @@ export default async function productPage({ params }) {
                     </p>
                 </div>
                 <div className="">
-                    <button type="button" className='text-sm w-max p-2 rounded bg-black text-white' value={res.category}>
-                        Add to Cart
+                    <button type="button" className='text-sm w-max p-2 flex gap-2 rounded bg-black text-white' value={res.category}>
+                        <ShoppingCart/> Add to Cart
                     </button>
                 </div>
-                <div className=' w-6/12 font-sans font-light'>
+                <div className=' w-full font-sans font-light'>
                     <p>
                         {res.description}
                     </p>
